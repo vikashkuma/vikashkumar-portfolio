@@ -1,22 +1,6 @@
-import React from 'react';
+import content from '../content';
 
-const certifications = [
-  {
-    name: 'AWS Certified Solutions Architect',
-    org: 'Amazon Web Services',
-    year: '2022',
-  },
-  {
-    name: 'Google Professional Cloud Developer',
-    org: 'Google Cloud',
-    year: '2021',
-  },
-  {
-    name: 'Scrum Master Certified (SMC)',
-    org: 'Scrum Alliance',
-    year: '2020',
-  },
-];
+const certifications = content.certifications;
 
 const CertificationsList = () => (
   <div className="mt-12">

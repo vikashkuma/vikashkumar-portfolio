@@ -1,32 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowTopRightOnSquareIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
+import content from '../content';
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include real-time inventory, payment processing, and admin dashboard.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates, team features, and analytics dashboard.",
-    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    tags: ["React", "TypeScript", "Firebase", "Tailwind"],
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    title: "AI-Powered Analytics",
-    description: "An analytics dashboard with AI-powered insights and predictions for business metrics.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    tags: ["React", "Python", "TensorFlow", "D3.js"],
-    demoLink: "#",
-    githubLink: "#",
-  },
-];
+const projects = content.projects;
 
 // Add a mapping from tag/library to official documentation URL
 const docLinks: { [key: string]: string } = {
@@ -54,11 +30,10 @@ const Projects = () => {
           className="text-center mb-10 sm:mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Featured Projects
+            {content.projectsSection.title}
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            A selection of my recent work showcasing my expertise in building modern web applications
-            with a focus on user experience and performance.
+            {content.projectsSection.description}
           </p>
         </motion.div>
 

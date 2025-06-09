@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDocker } from 'react-icons/fa';
+import { FaJs, FaReact, FaNodeJs, FaGitAlt, FaDocker } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiExpress, SiJest, SiCypress, SiGithubactions, SiGitlab, SiVercel, SiNetlify, SiHelm, SiKubernetes, SiWebpack, SiEslint, SiStorybook, SiFirebase, SiGraphql, SiLangchain } from 'react-icons/si';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { PiGraph } from 'react-icons/pi';
 import { BsRobot } from 'react-icons/bs';
+import content from '../content';
 
 interface SkillTab {
   label: string;
@@ -16,54 +17,8 @@ interface Skill {
   proficiency: number;
 }
 
-const skillTabs: SkillTab[] = [
-  { label: 'Frontend', key: 'frontend' },
-  { label: 'Backend', key: 'backend' },
-  { label: 'DevOps/Deployment', key: 'devops' },
-  { label: 'Testing', key: 'testing' },
-  { label: 'AI/GenAI', key: 'ai' },
-  { label: 'Others', key: 'others' },
-];
-
-const skills: Skill[] = [
-  // Frontend
-  { name: 'React', tab: 'frontend', proficiency: 95 },
-  { name: 'Next.js', tab: 'frontend', proficiency: 90 },
-  { name: 'TypeScript', tab: 'frontend', proficiency: 90 },
-  { name: 'TailwindCSS', tab: 'frontend', proficiency: 85 },
-  { name: 'Design Systems', tab: 'frontend', proficiency: 80 },
-  { name: 'Accessibility', tab: 'frontend', proficiency: 80 },
-  // Backend
-  { name: 'Node.js', tab: 'backend', proficiency: 85 },
-  { name: 'Express', tab: 'backend', proficiency: 80 },
-  { name: 'MongoDB', tab: 'backend', proficiency: 80 },
-  { name: 'PostgreSQL', tab: 'backend', proficiency: 70 },
-  { name: 'REST', tab: 'backend', proficiency: 85 },
-  { name: 'GraphQL', tab: 'backend', proficiency: 75 },
-  // DevOps/Deployment
-  { name: 'Docker', tab: 'devops', proficiency: 80 },
-  { name: 'GitHub Actions', tab: 'devops', proficiency: 75 },
-  { name: 'GitLab', tab: 'devops', proficiency: 70 },
-  { name: 'Vercel', tab: 'devops', proficiency: 80 },
-  { name: 'Netlify', tab: 'devops', proficiency: 75 },
-  { name: 'Helm', tab: 'devops', proficiency: 60 },
-  { name: 'Kubernetes', tab: 'devops', proficiency: 50 },
-  // Testing
-  { name: 'Jest', tab: 'testing', proficiency: 80 },
-  { name: 'React Testing Library', tab: 'testing', proficiency: 75 },
-  { name: 'Cypress', tab: 'testing', proficiency: 70 },
-  // AI/GenAI
-  { name: 'GPT-4 API', tab: 'ai', proficiency: 70 },
-  { name: 'LangChain', tab: 'ai', proficiency: 60 },
-  { name: 'RAG architecture basics', tab: 'ai', proficiency: 60 },
-  { name: 'Prompt engineering', tab: 'ai', proficiency: 65 },
-  // Others
-  { name: 'Git', tab: 'others', proficiency: 90 },
-  { name: 'Webpack', tab: 'others', proficiency: 70 },
-  { name: 'ESLint', tab: 'others', proficiency: 80 },
-  { name: 'Storybook', tab: 'others', proficiency: 70 },
-  { name: 'Firebase', tab: 'others', proficiency: 70 },
-];
+const skillTabs: SkillTab[] = content.skills.tabs;
+const skills: Skill[] = content.skills.items;
 
 const getIcon = (name: string) => {
   const icons: { [key: string]: JSX.Element } = {

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import content from '../content';
 
 interface NavLink {
   href: string;
@@ -44,7 +45,7 @@ const HeaderNav: React.FC<HeaderNavProps> = ({
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8">
-            {navLinks.map((link) => (
+            {content.nav.map((link) => (
               <motion.li
                 key={link.href}
                 whileHover={{ scale: 1.1 }}

@@ -1,4 +1,5 @@
 import React from 'react';
+import content from '../content';
 
 interface TechStackItem {
   name: string;
@@ -12,7 +13,7 @@ interface TechStackProficiencyProps {
 
 const TechStackProficiency: React.FC<TechStackProficiencyProps> = ({ techStack, currentSkills }) => (
   <div className="mt-12 max-w-2xl mx-auto">
-    <h3 className="text-2xl font-semibold mb-6 text-center">Tech Stack Proficiency</h3>
+    <h3 className="text-2xl font-semibold mb-6 text-center">{content.skills.proficiencyTitle}</h3>
     <div className="space-y-5">
       {techStack
         .filter(stack => currentSkills.some(skill => skill.name === stack.name))

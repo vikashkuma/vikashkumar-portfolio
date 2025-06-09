@@ -1,22 +1,6 @@
-import React from 'react';
+import content from '../content';
 
-const testimonials = [
-  {
-    quote: "Vikash is a highly skilled engineer who consistently delivers high-quality work. His attention to detail and ability to solve complex problems make him a valuable asset to any team.",
-    name: "Ankit Sharma",
-    title: "Engineering Manager, Catchpoint"
-  },
-  {
-    quote: "Working with Vikash was a pleasure. He brings innovative solutions to the table and is always willing to help others grow.",
-    name: "Priya Singh",
-    title: "Lead Developer, Accure Inc."
-  },
-  {
-    quote: "Vikash's expertise in frontend technologies and his leadership skills have been instrumental in the success of our projects.",
-    name: "Rahul Verma",
-    title: "Project Manager, EPAM Systems"
-  }
-];
+const testimonials = content.testimonials;
 
 const Testimonials = () => (
   <section id="testimonials" className="py-20 bg-gray-50 dark:bg-gray-900 min-h-screen">
