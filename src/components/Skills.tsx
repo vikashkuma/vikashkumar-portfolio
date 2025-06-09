@@ -1,140 +1,150 @@
-import React, { useState } from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaAngular, FaBootstrap, FaJenkins, FaNpm } from 'react-icons/fa';
-import { SiTypescript, SiRedux, SiGraphql, SiMongodb, SiJest, SiWebpack, SiD3Dotjs, SiFigma, SiGo, SiExpress, SiApollographql, SiTerraform } from 'react-icons/si';
+import { useState } from 'react';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaDocker } from 'react-icons/fa';
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiExpress, SiJest, SiCypress, SiGithubactions, SiGitlab, SiVercel, SiNetlify, SiHelm, SiKubernetes, SiWebpack, SiEslint, SiStorybook, SiFirebase, SiGraphql, SiLangchain } from 'react-icons/si';
+import { TbBrandReactNative } from 'react-icons/tb';
+import { PiGraph } from 'react-icons/pi';
+import { BsRobot } from 'react-icons/bs';
 
-const skillTabs = [
-  {
-    label: 'Frontend',
-    key: 'frontend',
-    skills: [
-      { name: 'HTML5', icon: FaHtml5, url: 'https://developer.mozilla.org/docs/Web/HTML' },
-      { name: 'CSS3', icon: FaCss3Alt, url: 'https://developer.mozilla.org/docs/Web/CSS' },
-      { name: 'JavaScript', icon: FaJs, url: 'https://developer.mozilla.org/docs/Web/JavaScript' },
-      { name: 'TypeScript', icon: SiTypescript, url: 'https://www.typescriptlang.org/docs/' },
-      { name: 'React', icon: FaReact, url: 'https://react.dev/' },
-      { name: 'Redux', icon: SiRedux, url: 'https://redux.js.org/' },
-      { name: 'GraphQL', icon: SiGraphql, url: 'https://graphql.org/learn/' },
-      { name: 'Apollo', icon: SiApollographql, url: 'https://www.apollographql.com/docs/' },
-      { name: 'Angular', icon: FaAngular, url: 'https://angular.io/docs' },
-      { name: 'Bootstrap', icon: FaBootstrap, url: 'https://getbootstrap.com/docs/' },
-      { name: 'D3.js', icon: SiD3Dotjs, url: 'https://d3js.org/' },
-    ],
-  },
-  {
-    label: 'Backend',
-    key: 'backend',
-    skills: [
-      { name: 'Node.js', icon: FaNodeJs, url: 'https://nodejs.org/en/docs/' },
-      { name: 'Express', icon: SiExpress, url: 'https://expressjs.com/' },
-      { name: 'MongoDB', icon: SiMongodb, url: 'https://www.mongodb.com/docs/' },
-      { name: 'Go', icon: SiGo, url: 'https://go.dev/doc/' },
-      { name: 'GraphQL', icon: SiGraphql, url: 'https://graphql.org/learn/' },
-      { name: 'Apollo', icon: SiApollographql, url: 'https://www.apollographql.com/docs/' },
-    ],
-  },
-  {
-    label: 'Tools/DevOps',
-    key: 'tools',
-    skills: [
-      { name: 'Git', icon: FaGitAlt, url: 'https://git-scm.com/doc' },
-      { name: 'Docker', icon: FaDocker, url: 'https://docs.docker.com/' },
-      { name: 'Jenkins', icon: FaJenkins, url: 'https://www.jenkins.io/doc/' },
-      { name: 'NPM', icon: FaNpm, url: 'https://docs.npmjs.com/' },
-      { name: 'Webpack', icon: SiWebpack, url: 'https://webpack.js.org/concepts/' },
-      { name: 'Jest', icon: SiJest, url: 'https://jestjs.io/docs/getting-started' },
-      { name: 'Terraform', icon: SiTerraform, url: 'https://developer.hashicorp.com/terraform/docs' },
-    ],
-  },
-  {
-    label: 'Other',
-    key: 'other',
-    skills: [
-      { name: 'Figma', icon: SiFigma, url: 'https://help.figma.com/hc/en-us' },
-      { name: 'Agile/Scrum', icon: SiFigma, url: 'https://www.scrum.org/resources/what-is-scrum' },
-    ],
-  },
+interface SkillTab {
+  label: string;
+  key: string;
+}
+
+interface Skill {
+  name: string;
+  tab: string;
+  proficiency: number;
+}
+
+const skillTabs: SkillTab[] = [
+  { label: 'Frontend', key: 'frontend' },
+  { label: 'Backend', key: 'backend' },
+  { label: 'DevOps/Deployment', key: 'devops' },
+  { label: 'Testing', key: 'testing' },
+  { label: 'AI/GenAI', key: 'ai' },
+  { label: 'Others', key: 'others' },
 ];
 
-const techStack = [
-  { name: 'React', level: 95 },
-  { name: 'TypeScript', level: 90 },
-  { name: 'JavaScript', level: 95 },
-  { name: 'Redux', level: 90 },
-  { name: 'GraphQL', level: 85 },
-  { name: 'Node.js', level: 80 },
-  { name: 'Express', level: 80 },
-  { name: 'MongoDB', level: 75 },
-  { name: 'Jest', level: 80 },
-  { name: 'Docker', level: 70 },
-  { name: 'Git', level: 90 },
-  { name: 'HTML5', level: 95 },
-  { name: 'CSS3', level: 90 },
-  { name: 'Bootstrap', level: 80 },
-  { name: 'Angular', level: 70 },
+const skills: Skill[] = [
+  // Frontend
+  { name: 'React', tab: 'frontend', proficiency: 95 },
+  { name: 'Next.js', tab: 'frontend', proficiency: 90 },
+  { name: 'TypeScript', tab: 'frontend', proficiency: 90 },
+  { name: 'TailwindCSS', tab: 'frontend', proficiency: 85 },
+  { name: 'Design Systems', tab: 'frontend', proficiency: 80 },
+  { name: 'Accessibility', tab: 'frontend', proficiency: 80 },
+  // Backend
+  { name: 'Node.js', tab: 'backend', proficiency: 85 },
+  { name: 'Express', tab: 'backend', proficiency: 80 },
+  { name: 'MongoDB', tab: 'backend', proficiency: 80 },
+  { name: 'PostgreSQL', tab: 'backend', proficiency: 70 },
+  { name: 'REST', tab: 'backend', proficiency: 85 },
+  { name: 'GraphQL', tab: 'backend', proficiency: 75 },
+  // DevOps/Deployment
+  { name: 'Docker', tab: 'devops', proficiency: 80 },
+  { name: 'GitHub Actions', tab: 'devops', proficiency: 75 },
+  { name: 'GitLab', tab: 'devops', proficiency: 70 },
+  { name: 'Vercel', tab: 'devops', proficiency: 80 },
+  { name: 'Netlify', tab: 'devops', proficiency: 75 },
+  { name: 'Helm', tab: 'devops', proficiency: 60 },
+  { name: 'Kubernetes', tab: 'devops', proficiency: 50 },
+  // Testing
+  { name: 'Jest', tab: 'testing', proficiency: 80 },
+  { name: 'React Testing Library', tab: 'testing', proficiency: 75 },
+  { name: 'Cypress', tab: 'testing', proficiency: 70 },
+  // AI/GenAI
+  { name: 'GPT-4 API', tab: 'ai', proficiency: 70 },
+  { name: 'LangChain', tab: 'ai', proficiency: 60 },
+  { name: 'RAG architecture basics', tab: 'ai', proficiency: 60 },
+  { name: 'Prompt engineering', tab: 'ai', proficiency: 65 },
+  // Others
+  { name: 'Git', tab: 'others', proficiency: 90 },
+  { name: 'Webpack', tab: 'others', proficiency: 70 },
+  { name: 'ESLint', tab: 'others', proficiency: 80 },
+  { name: 'Storybook', tab: 'others', proficiency: 70 },
+  { name: 'Firebase', tab: 'others', proficiency: 70 },
 ];
+
+const getIcon = (name: string) => {
+  const icons: { [key: string]: JSX.Element } = {
+    React: <FaReact className="w-6 h-6" />,
+    'Next.js': <SiNextdotjs className="w-6 h-6" />,
+    TypeScript: <SiTypescript className="w-6 h-6" />,
+    TailwindCSS: <SiTailwindcss className="w-6 h-6" />,
+    'Design Systems': <TbBrandReactNative className="w-6 h-6" />,
+    Accessibility: <PiGraph className="w-6 h-6" />,
+    'Node.js': <FaNodeJs className="w-6 h-6" />,
+    Express: <SiExpress className="w-6 h-6" />,
+    MongoDB: <SiMongodb className="w-6 h-6" />,
+    PostgreSQL: <SiPostgresql className="w-6 h-6" />,
+    REST: <FaJs className="w-6 h-6" />,
+    GraphQL: <SiGraphql className="w-6 h-6" />,
+    Docker: <FaDocker className="w-6 h-6" />,
+    'GitHub Actions': <SiGithubactions className="w-6 h-6" />,
+    GitLab: <SiGitlab className="w-6 h-6" />,
+    Vercel: <SiVercel className="w-6 h-6" />,
+    Netlify: <SiNetlify className="w-6 h-6" />,
+    Helm: <SiHelm className="w-6 h-6" />,
+    Kubernetes: <SiKubernetes className="w-6 h-6" />,
+    Jest: <SiJest className="w-6 h-6" />,
+    'React Testing Library': <FaReact className="w-6 h-6" />,
+    Cypress: <SiCypress className="w-6 h-6" />,
+    'GPT-4 API': <BsRobot className="w-6 h-6" />,
+    LangChain: <SiLangchain className="w-6 h-6" />,
+    'RAG architecture basics': <BsRobot className="w-6 h-6" />,
+    'Prompt engineering': <BsRobot className="w-6 h-6" />,
+    Git: <FaGitAlt className="w-6 h-6" />,
+    Webpack: <SiWebpack className="w-6 h-6" />,
+    ESLint: <SiEslint className="w-6 h-6" />,
+    Storybook: <SiStorybook className="w-6 h-6" />,
+    Firebase: <SiFirebase className="w-6 h-6" />,
+  };
+  return icons[name] || null;
+};
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('frontend');
-  const currentSkills = skillTabs.find(tab => tab.key === activeTab)?.skills || [];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <section id="skills" className="py-20 bg-white dark:bg-gray-800">
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-10 text-center">Skills</h2>
-        {/* Skills Sub-Tabs */}
-        <div className="flex justify-center mb-8 gap-2 flex-wrap">
-          {skillTabs.map(tab => (
+        <h2 className="text-3xl font-bold mb-8 text-center">Skills & Tech Stack</h2>
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {skillTabs.map((tab) => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-4 py-2 rounded-t-lg font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-                ${activeTab === tab.key ? 'bg-blue-500 text-white shadow' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900'}`}
+              className={`px-4 py-2 rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                activeTab === tab.key
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900'
+              }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
-        {/* Skills Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 sm:gap-8 justify-items-center">
-          {currentSkills.map(({ name, icon: Icon, url }) => (
-            <a
-              key={name}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center cursor-pointer"
-              title={name}
-            >
-              <Icon
-                className="w-8 h-8 sm:w-10 sm:h-10 mb-2 text-gray-400 group-hover:text-blue-600 transition-colors duration-200"
-              />
-              <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-200 group-hover:text-blue-600 transition-colors duration-200">
-                {name}
-              </span>
-            </a>
-          ))}
-        </div>
-        {/* Tech Stack Proficiency Bars */}
-        <div className="mt-12 max-w-2xl mx-auto">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Tech Stack Proficiency</h3>
-          <div className="space-y-5">
-            {techStack
-              .filter(stack => currentSkills.some(skill => skill.name === stack.name))
-              .map(({ name, level }) => (
-                <div key={name} className="flex flex-col gap-1">
-                  <div className="flex justify-between mb-1">
-                    <span className="font-medium text-gray-700 dark:text-gray-200">{name}</span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{level}%</span>
-                  </div>
-                  <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div
-                      className="h-3 rounded-full bg-blue-600 transition-all duration-700"
-                      style={{ width: `${level}%` }}
-                    />
-                  </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {skills
+            .filter((skill) => skill.tab === activeTab)
+            .map((skill) => (
+              <div
+                key={skill.name}
+                className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow hover:shadow-lg transition-shadow"
+              >
+                {getIcon(skill.name)}
+                <span className="mt-2 font-medium text-gray-900 dark:text-white text-center">
+                  {skill.name}
+                </span>
+                <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 mt-2">
+                  <div
+                    className="bg-blue-600 h-2 rounded-full"
+                    style={{ width: `${skill.proficiency}%` }}
+                  />
                 </div>
-              ))}
-          </div>
+                <span className="text-xs text-gray-500 mt-1">{skill.proficiency}%</span>
+              </div>
+            ))}
         </div>
       </div>
     </section>

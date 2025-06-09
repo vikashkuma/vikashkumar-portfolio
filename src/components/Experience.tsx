@@ -95,7 +95,6 @@ const Experience = () => (
           <ExperienceItem
             key={exp.year + exp.title}
             year={exp.year}
-            color={exp.color}
             title={exp.title}
             org={exp.org}
             time={exp.time}
@@ -111,7 +110,6 @@ const Experience = () => (
           <ExperienceItem
             key={edu.year + edu.title}
             year={edu.year}
-            color={edu.color}
             title={edu.title}
             org={edu.org}
             time={edu.time}
