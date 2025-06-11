@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDownIcon, EnvelopeIcon, ArrowDownTrayIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 import { useState, useRef, useEffect } from 'react';
 import content from '../content';
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 const coverLetter = content.hero.coverLetter;
 
@@ -9,10 +10,12 @@ const Home = () => {
   const [showCoverLetter, setShowCoverLetter] = useState(false);
   const coverLetterButtonRef = useRef<HTMLButtonElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const wasModalOpen = useRef(false);
 
   // Trap focus in modal and close on Esc
   useEffect(() => {
     if (showCoverLetter) {
+      wasModalOpen.current = true;
       const node = modalRef.current;
       const focusable = node ? (node.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -41,7 +44,10 @@ const Home = () => {
       setTimeout(() => { if (first) first.focus(); }, 0);
       return () => document.removeEventListener('keydown', handleKeyDown);
     } else {
-      if (coverLetterButtonRef.current) coverLetterButtonRef.current.focus();
+      if (wasModalOpen.current && coverLetterButtonRef.current) {
+        coverLetterButtonRef.current.focus();
+      }
+      wasModalOpen.current = false;
     }
   }, [showCoverLetter]);
 
@@ -66,8 +72,14 @@ const Home = () => {
     },
   };
 
+  const socialIcons = {
+    GitHub: <FaGithub className="w-5 h-5" />,
+    LinkedIn: <FaLinkedin className="w-5 h-5" />,
+    'Twitter/X': <FaXTwitter className="w-5 h-5" />,
+  };
+
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 scroll-mt-[120px]">
+    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 sm:pt-2 scroll-mt-[120px]">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
       
@@ -99,13 +111,13 @@ const Home = () => {
         </motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-2 md:mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-2 md:mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
         >
           {content.hero.heading}
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 max-w-xl mx-auto"
+          className="text-sm sm:text-base md:text-md text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 max-w-xl mx-auto"
         >
           {content.hero.description}
         </motion.p>
@@ -161,7 +173,7 @@ const Home = () => {
         {/* Social links */}
         <motion.div
           variants={itemVariants}
-          className="flex gap-4 sm:gap-6 justify-center mt-6 sm:mt-8 md:mt-12"
+          className="flex gap-4 sm:gap-6 justify-center mt-1 mb-6 sm:mt-1 sm:mb-8 md:mt-1 md:mb-10"
         >
           {content.hero.social.map((link) => (
             <a
@@ -169,10 +181,11 @@ const Home = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2"
               aria-label={link.aria}
             >
-              {link.label}
+              {socialIcons[link.label as keyof typeof socialIcons]}
+              <span className="sr-only">{link.label}</span>
             </a>
           ))}
         </motion.div>

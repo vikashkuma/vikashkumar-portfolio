@@ -42,6 +42,12 @@ function App() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Set on mount
+
+    // Scroll to top on initial load if no hash is present
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

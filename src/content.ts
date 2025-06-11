@@ -9,10 +9,10 @@ const content = {
     { href: '#contact', label: 'Contact' },
   ],
   hero: {
-    role: 'Senior Frontend Developer',
+    role: 'Lead Software Engineer',
     heading: "Hi, I'm Vikash Kumar",
     description: 'Crafting exceptional digital experiences through clean code and innovative design. Specializing in React, TypeScript, and modern web technologies.',
-    about: 'Senior software engineer with 8+ years of experience in IoT, medical imaging, and performance monitoring domains. Proficient in React.js, TypeScript, JavaScript and the full software development cycle, with a strong focus on delivering innovative solutions in healthcare technology.',
+    about: 'Lead Software Engineer at EPAM Systems with 9+ years of experience, currently leading development teams to deliver high-quality software solutions. Specialized in React, TypeScript, and modern web technologies, with a strong focus on innovative solutions in healthcare and performance monitoring domains.',
     aboutTitle: 'About Me',
     cta: {
       work: 'View My Work',
@@ -33,7 +33,7 @@ const content = {
     coverLetter: `Dear Hiring Manager,\n\nI am writing to express my interest in the Frontend Developer position at your esteemed organization. With over 8 years of experience in software engineering, I have developed a strong expertise in building innovative, scalable, and high-performance web applications, particularly in the domains of IoT, medical imaging, and performance monitoring.\n\nThroughout my career, I have demonstrated proficiency in React.js, TypeScript, JavaScript, and the full software development cycle. My recent role as a Senior Software Engineer at Catchpoint involved leading a team to design, develop, and deploy performance monitoring solutions using modern frameworks and technologies such as React, Redux, GraphQL, and Node.js. I have a proven track record of delivering user-centric applications, optimizing system performance, and mentoring junior developers to achieve project goals.\n\nMy experience also includes developing medical imaging solutions at Accure Pvt. Ltd., where I contributed to innovative healthcare applications, and building IoT platforms at Techchefs Software Pvt. Ltd., where I was responsible for UI development and API integration for smart home devices.\n\nI am passionate about staying at the forefront of technology, as evidenced by my participation in hackathons and continuous learning through courses in AI and ML. My technical skills are complemented by a strong foundation in Agile methodologies, user interface design, and a commitment to delivering high-quality software.\n\nI am excited about the opportunity to contribute my skills and experience to your team and help drive the success of your projects. Thank you for considering my application. I look forward to the possibility of discussing how I can add value to your organization.\n\nSincerely,\nVikash Kumar`,
     aboutSection: {
       title: 'About Me',
-      description: 'Senior software engineer with 8+ years of experience in IoT, medical imaging, and performance monitoring domains. Proficient in React.js, TypeScript, JavaScript and the full software development cycle, with a strong focus on delivering innovative solutions in healthcare technology.'
+      description: 'Lead Software Engineer at EPAM Systems, leading teams to build innovative, high-quality software solutions. 8+ years of experience in React, TypeScript, and modern web technologies, with a focus on healthcare, IoT, and performance monitoring domains.'
     },
     scrollDown: 'Scroll Down',
   },
@@ -66,6 +66,7 @@ const content = {
       { name: 'Netlify', tab: 'devops', proficiency: 75 },
       { name: 'Helm', tab: 'devops', proficiency: 60 },
       { name: 'Kubernetes', tab: 'devops', proficiency: 50 },
+      { name: 'Terraform', tab: 'devops', proficiency: 65 },
       { name: 'Jest', tab: 'testing', proficiency: 80 },
       { name: 'React Testing Library', tab: 'testing', proficiency: 75 },
       { name: 'Cypress', tab: 'testing', proficiency: 70 },
@@ -78,6 +79,7 @@ const content = {
       { name: 'ESLint', tab: 'others', proficiency: 80 },
       { name: 'Storybook', tab: 'others', proficiency: 70 },
       { name: 'Firebase', tab: 'others', proficiency: 70 },
+      { name: 'Retool', tab: 'others', proficiency: 60 },
     ],
     proficiencyTitle: 'Tech Stack Proficiency',
   },
@@ -85,12 +87,14 @@ const content = {
     {
       year: '2024',
       color: 'blue',
-      title: 'Lead Software Development Engineer',
+      title: 'Lead Software Engineer',
       org: 'EPAM Systems',
       time: 'Oct 2024 – Present · Bengaluru, Karnataka, India (Hybrid)',
       details: [
         'Leading development teams to deliver high-quality software solutions.',
-        'Skills: Leading Development Teams',
+        'Worked for client Uber for 2 months, utilizing Retool to streamline the onboarding of stores into the Uber system.',
+        'Currently working for client London Stock Exchange Group (LSEG) for the past 5 months, developing solutions to prevent fraudulent transactions and enhance financial security.',
+        'Skills: Leading Development Teams, Retool, Fraud Prevention, Client Collaboration',
       ],
     },
     {
@@ -150,18 +154,26 @@ const content = {
     {
       year: '2011',
       color: 'purple',
-      title: 'Intermediate (Science)',
-      org: '[Your School Name Here]',
-      time: '2009 — 2011',
+      title: 'Engineering Exam Preparation',
+      org: 'Vision Classes Patna',
+      time: 'June 2009 — April 2011',
       details: [],
     },
     {
       year: '2009',
       color: 'purple',
-      title: 'Metric',
-      org: '[Your School Name Here]',
+      title: 'Intermediate (Science)',
+      org: 'S B A N College Darheta Ladi',
       time: '2007 — 2009',
-      details: [],
+      details: ['68.6%'],
+    },
+    {
+      year: '2007',
+      color: 'purple',
+      title: 'Metric',
+      org: 'Pravesika High School Shakurabad',
+      time: '2006 — 2007',
+      details: ['67.6%'],
     },
   ],
   projects: [

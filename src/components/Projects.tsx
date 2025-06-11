@@ -20,7 +20,7 @@ const docLinks: { [key: string]: string } = {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-12 sm:py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-12 sm:py-6 bg-gray-50 dark:bg-gray-900">
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
