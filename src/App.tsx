@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import Home from './components/Home';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import HeaderNav from './components/HeaderNav';
-import Testimonials from './components/Testimonials';
-import Awards from './components/Awards';
+
+// Lazy load components
+const Home = lazy(() => import('./components/Home'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Experience = lazy(() => import('./components/Experience'));
+const Contact = lazy(() => import('./components/Contact'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Awards = lazy(() => import('./components/Awards'));
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -45,14 +47,15 @@ function App() {
 
     // Scroll to top on initial load if no hash is present
     if (!window.location.hash) {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className={`${isDark ? 'dark' : ''} bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 overflow-x-hidden w-full`}>
+    <div className={`${isDark ? 'dark' : ''} bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300 overflow-x-hidden w-full`}>
+      <a href="#main-content" className="sr-only focus:not-sr-only bg-blue-900 text-white px-4 py-2 z-50 absolute top-2 left-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">Skip to main content</a>
       {/* Sticky Header */}
       <HeaderNav
         navLinks={navLinks}
@@ -63,17 +66,26 @@ function App() {
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
-      <main className="pt-16 sm:pt-20 w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-        <Home />
-        <Projects />
-        <Skills />
-        <Testimonials />
-        <Awards />
-        <Experience />
-        <Contact />
+      <main id="main-content" className="flex-1 w-full" tabIndex={-1} aria-label="Main content">
+        <Suspense fallback={<LoadingFallback />}>
+          <Home />
+          <Projects />
+          <Skills />
+          <Testimonials />
+          <Awards />
+          <Experience />
+          <Contact />
+        </Suspense>
       </main>
     </div>
   );
 }
+
+// Loading component
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+  </div>
+);
 
 export default App;

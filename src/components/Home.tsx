@@ -51,23 +51,24 @@ const Home = () => {
     }
   }, [showCoverLetter]);
 
+  // Simplified animation variants for better performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        duration: 0.3,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.2,
       },
     },
   };
@@ -80,14 +81,14 @@ const Home = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 sm:pt-2 scroll-mt-[120px]">
-      {/* Background gradient */}
+      {/* Static background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
       
-      {/* Animated circles */}
+      {/* Simplified animated circles */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-1/4 left-1/4 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
-        <div className="absolute top-1/3 right-1/4 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-1/4 left-1/3 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
+        <div className="absolute top-1/4 left-1/4 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-xl" />
+        <div className="absolute top-1/3 right-1/4 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-xl" />
+        <div className="absolute bottom-1/4 left-1/3 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-xl" />
       </div>
 
       <motion.div
@@ -96,35 +97,44 @@ const Home = () => {
         animate="visible"
         className="text-center max-w-2xl mx-auto px-2 sm:px-4 flex flex-col items-center"
       >
-        {/* Profile Photo */}
+        {/* Profile Photo - Prioritized loading */}
         <motion.div variants={itemVariants} className="flex justify-center mb-2 sm:mb-3 mt-0">
           <img
             src="/profile.jpg"
-            alt="Vikash Kumar profile"
+            alt="Portrait of Vikash Kumar, Lead Software Engineer"
             className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+            loading="eager"
+            fetchpriority="high"
+            width="112"
+            height="112"
           />
         </motion.div>
-        <motion.div variants={itemVariants} className="mb-2 sm:mb-2 md:mb-3">
-          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs sm:text-sm font-medium">
+
+        {/* Role - Static content */}
+        <div className="mb-2 sm:mb-2 md:mb-3">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-200 dark:bg-blue-900 text-blue-900 dark:text-blue-200 text-xs sm:text-sm font-medium">
             {content.hero.role}
           </span>
-        </motion.div>
-        <motion.h1
-          variants={itemVariants}
-          className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-2 md:mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+        </div>
+
+        {/* Name - Static content */}
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-2 md:mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          id="main-hero-heading"
         >
           {content.hero.heading}
-        </motion.h1>
-        <motion.p
-          variants={itemVariants}
-          className="text-sm sm:text-base md:text-md text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 max-w-xl mx-auto"
-        >
+        </h1>
+
+        {/* Description - Static content */}
+        <p className="text-sm sm:text-base md:text-md text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 max-w-xl mx-auto">
           {content.hero.description}
-        </motion.p>
+        </p>
+
+        {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center w-full max-w-2xl mx-auto mb-2 sm:mb-3">
           <a
             href="#projects"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-blue-800 text-white rounded-lg shadow-lg hover:bg-blue-900 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
             aria-label={content.hero.cta.work}
           >
             <ArrowDownIcon className="w-5 h-5" />
@@ -132,7 +142,7 @@ const Home = () => {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-gray-800 text-white rounded-lg shadow-lg hover:bg-gray-900 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-gray-900 text-white rounded-lg shadow-lg hover:bg-gray-800 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
             aria-label={content.hero.cta.contact}
           >
             <EnvelopeIcon className="w-5 h-5" />
@@ -141,7 +151,7 @@ const Home = () => {
           <a
             href={content.hero.cta.resumeUrl}
             download
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-green-800 text-white rounded-lg shadow-lg hover:bg-green-900 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
             aria-label={content.hero.cta.resume}
           >
             <ArrowDownTrayIcon className="w-5 h-5" />
@@ -151,7 +161,7 @@ const Home = () => {
             type="button"
             ref={coverLetterButtonRef}
             onClick={() => setShowCoverLetter(true)}
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:bg-purple-700 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-purple-800 text-white rounded-lg shadow-lg hover:bg-purple-900 transition-colors group min-w-[180px] focus:outline-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400"
             aria-label={content.hero.cta.coverLetter}
           >
             <DocumentTextIcon className="w-5 h-5" />
@@ -164,7 +174,7 @@ const Home = () => {
           variants={itemVariants}
           className="max-w-xl mx-auto mt-8 mb-6 sm:mt-10 sm:mb-8 px-4 py-5 rounded-xl bg-white/70 dark:bg-gray-800/70 shadow-md backdrop-blur-md border border-gray-100 dark:border-gray-700"
         >
-          <h3 className="text-lg font-semibold mb-2 text-blue-700 dark:text-blue-300">{content.hero.aboutSection.title}</h3>
+          <h2 className="text-lg font-semibold mb-2 text-blue-700 dark:text-blue-300">{content.hero.aboutSection.title}</h2>
           <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
             {content.hero.aboutSection.description}
           </p>

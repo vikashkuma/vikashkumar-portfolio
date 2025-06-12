@@ -17,6 +17,7 @@ const Contact = () => {
             action="https://formspree.io/f/mvgrkwra"
             method="POST"
             className="space-y-6"
+            aria-label="Contact form"
             onSubmit={() => setSubmitted(true)}
           >
             <div>
@@ -52,6 +53,7 @@ const Contact = () => {
             <button
               type="submit"
               className="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+              aria-label="Send message via contact form"
             >
               {c.send}
             </button>

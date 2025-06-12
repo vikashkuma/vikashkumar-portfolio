@@ -6,7 +6,7 @@ const experienceData = content.experience;
 const educationData = content.education;
 
 const Experience = () => (
-  <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-900">
+  <section id="experience" className="py-20 bg-gray-100 dark:bg-gray-800">
     <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-bold mb-8 text-center">Experience & Education</h2>
       <ol className="relative border-l border-gray-200 dark:border-gray-700 ml-2 sm:ml-4">

@@ -50,7 +50,7 @@ const Projects = () => {
               <div className="aspect-video overflow-hidden relative">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`Screenshot of ${project.title} project`}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -94,6 +94,7 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-xs sm:text-sm md:text-base text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                    aria-label={`View live demo of ${project.title}`}
                   >
                     <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" />
                     Live Demo
@@ -103,6 +104,7 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                    aria-label={`View source code of ${project.title}`}
                   >
                     <CodeBracketIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" />
                     Source Code

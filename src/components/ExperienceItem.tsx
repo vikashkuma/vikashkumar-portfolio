@@ -35,8 +35,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
         {org}
       </span>
     </h3>
-    <time className="block mb-2 ml-8 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{time}</time>
-    <ul className="mb-2 text-base font-normal text-gray-500 dark:text-gray-400 list-disc pl-5">
+    <time className="block mb-2 ml-8 text-sm font-normal leading-none text-gray-600 dark:text-gray-300">{time}</time>
+    <ul className="mb-2 text-base font-normal text-gray-700 dark:text-gray-200 list-disc pl-5">
       {details.map((d, i) => <li key={i}>{d}</li>)}
     </ul>
   </li>

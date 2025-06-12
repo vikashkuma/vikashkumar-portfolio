@@ -79,6 +79,9 @@ const Skills = () => {
             </button>
           ))}
         </div>
+        <h3 className="text-xl font-semibold mb-4 text-center text-gray-900 dark:text-gray-100">
+          {skillTabs.find(tab => tab.key === activeTab)?.label} Skills
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {skills
             .filter((skill) => skill.tab === activeTab)
