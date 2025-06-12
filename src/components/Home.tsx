@@ -80,7 +80,7 @@ const Home = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 sm:pt-2 scroll-mt-[120px]">
+    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 pt-32 sm:pt-20 scroll-mt-[120px]">
       {/* Static background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
       
@@ -104,7 +104,6 @@ const Home = () => {
             alt="Portrait of Vikash Kumar, Lead Software Engineer"
             className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-blue-500 shadow-lg"
             loading="eager"
-            fetchpriority="high"
             width="112"
             height="112"
           />

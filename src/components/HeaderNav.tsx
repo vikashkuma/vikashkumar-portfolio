@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import content from '../content';
