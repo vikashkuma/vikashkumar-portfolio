@@ -80,7 +80,10 @@ const Home = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 pt-32 sm:pt-20 scroll-mt-[120px]">
+    <section
+      id="home"
+      className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-2 pt-16 sm:pt-20 scroll-mt-[120px]"
+    >
       {/* Static background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
       
